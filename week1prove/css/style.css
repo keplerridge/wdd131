@@ -110,3 +110,16 @@ footer img {
     width: 100px;
     height: 65px;
 }
+
+.dark {
+    color: white;
+    background-color: black;
+}
+
+.dark-byu {
+    color: #50a8e7;
+}
+
+.white-border {
+    border-color: white;
+}
