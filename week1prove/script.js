@@ -1,39 +1,42 @@
-var menu = document.getElementsByTagName('select')[0];
+var menu = document.getElementById('drop-down');
 
-menu.addEventListener('change', darkMode()) {
-    var value = menu.value;
+menu.addEventListener('change', function() {
+    console.log('Hit');
+    var val = menu.value;
 
-    if (selectedValue == 'dark') {
+    if (val == 'dark') {
         darkMode();
     } else {
         lightMode();
     }
-}
+});
 
 function darkMode() {
-    var body = document.getElementsByTagName('body')[0];
-    var html = document.getElementsByTagName('html')[0];
-    var h1 = document.getElementsByTagName('h1')[0];
-    var img = document.getElementsByTagName('img')[0];
+    var body = document.body;
+    var html = document.documentElement;
+    var h1 = document.querySelector('h1');
+    var h2 = document.querySelector('h2');
+    var img = document.querySelector('img');
 
     html.classList.add('dark');
-    html.classList.add('white-border');
     body.classList.add('dark');
-    body.classList.add('white-border');
+    body.setAttribute('id', 'white-border');
     img.classList.add('dark');
     h1.classList.add('dark-byu');
+    h2.setAttribute('id', 'byu-underline');
 }
 
 function lightMode() {
-    var body = document.getElementsByTagName('body')[0];
-    var html = document.getElementsByTagName('html')[0];
-    var h1 = document.getElementsByTagName('h1')[0];
-    var img = document.getElementsByTagName('img')[0];
+    var body = document.body;
+    var html = document.documentElement;
+    var h1 = document.querySelector('h1');
+    var h2 = document.querySelector('h2');
+    var img = document.querySelector('img');
 
     html.classList.remove('dark');
-    html.classList.remove('white-border');
     body.classList.remove('dark');
-    body.classList.remove('white-border');
+    body.removeAttribute('id');
     img.classList.remove('dark');
     h1.classList.remove('dark-byu');
+    h2.removeAttribute('id');
 }
