@@ -120,6 +120,10 @@ footer img {
     color: #50a8e7;
 }
 
-.white-border {
-    border-color: white;
+#white-border {
+    border: white solid .75px;
+}
+
+#byu-underline {
+    border-bottom: solid white .75px;
 }
