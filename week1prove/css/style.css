@@ -112,18 +112,10 @@ footer img {
 }
 
 .dark {
+    background-color: #333;
     color: white;
-    background-color: black;
 }
 
-.dark-byu {
-    color: #50a8e7;
-}
-
-#white-border {
-    border: white solid .75px;
-}
-
-#byu-underline {
-    border-bottom: solid white .75px;
+.dark h2 {
+    color: rgb(160, 212, 237);
 }
