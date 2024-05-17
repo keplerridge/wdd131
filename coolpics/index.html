@@ -6,14 +6,19 @@
     <meta name="description" content="This is a website that holds pictures with dynamic design">
     <meta name="author" content="Kepler Ridge">
     <link rel="stylesheet" href="coolpics.css">
-    <script src="coolpics.js"></script>
+    <script src="coolpics.js" defer></script>
     <title>Cool Pics</title>
 </head>
 <body>
+    <div class="viewer">
+        <button class="close-viewer">X</button>
+        <img src="image.jpg" alt="alt description">
+        <!-- <img src="./norris-full.jpeg" alt="alt description"> -->
+    </div>
     <header>
         <h1>Cool Pics 📷</h1>
-        <button class="nav-button">Menu</button>
-        <nav>
+        <button class="nav-button" id="button">Menu</button>
+        <nav class="hide" id="nav">
             <a>Home</a>
             <a>People</a>
             <a>Places</a>
