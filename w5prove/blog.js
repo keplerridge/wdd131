@@ -61,6 +61,10 @@ function generateBooks() {
         reviewStars.classList.add('review-stars');
         reviewStars.textContent = article.stars;
         bookReviewSection.appendChild(reviewStars);
+
+        const blankElement = document.createElement('article');
+        blankElement.classList.add('blank');
+        mainBookSection.appendChild(blankElement);
         
         const titleElement = document.createElement('h2');
         titleElement.textContent = article.title;

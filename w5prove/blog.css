@@ -65,13 +65,26 @@ main {
 .reviews {
     grid-row: 1/3;
     text-align: end;
+    border-right: solid;
+    border-width: 1px;
+    border-color: var(--gold-color);
+}
+
+.blank {
+    grid-column: 1/2;
+    grid-row: 3/6;
+    width: 100%;
+    border-right: solid;
+    border-width: 1px;
+    border-color: var(--gold-color);
+    height: 100%;
 }
 
 .book-title, .book-cover, .description {
     grid-column: 2/3;
-    border-left: solid;
+    /* border-left: solid;
     border-width: 1px;
-    border-color: var(--gold-color);
+    border-color: var(--gold-color); */
 }
 
 .book-title {
