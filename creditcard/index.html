@@ -17,17 +17,17 @@
             height="55px">
             <p id="total">Total: $199</p>
             <label id="num-label" for='card-number'>CARD NUMBER</label>
-            <input type="text" id="card-number" placeholder="Enter Card Number" name="cardInput">
+            <input type="text" id="card-number" placeholder="Enter Card Number" name="cardInput" maxlength="16" minlength="16" required>
             <label id="name-label" for="card-holder">CARD HOLDER</label>
-            <input type="text" id="card-holder" placeholder="John Doe" name="cardHolder">
+            <input type="text" id="card-holder" placeholder="John Doe" name="cardHolder" required>
             <label id="date" for="exp">EXPIRATION</label>
-            <input type="text" id="month" class="exp-date" placeholder="MM" name="month">
-            <input type="text" id="year" class="exp-date" placeholder="YY" name="year">
+            <input type="text" id="month" class="exp-date" placeholder="MM" name="month" maxlength="2" minlength="2" required>
+            <input type="text" id="year" class="exp-date" placeholder="YY" name="year" maxlength="2" minlength="2" required>
         </section>
         <section id="back-of-card">
             <div id="card-strip"></div>
             <label id="cvv-label" for="cvv">CVC/CVV</label>
-            <input type="text" id="cvv" placeholder="xxx">
+            <input type="text" id="cvv" placeholder="xxx" maxlength="3" minlength="3" required>
         </section>
         <button>Submit</button>
     </form>
