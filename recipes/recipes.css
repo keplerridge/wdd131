@@ -23,7 +23,7 @@ img {
     display: block; /* Ensure images behave as blocks */
 }
 
-/* Header Styles */
+  /* Header Styles */
 header {
     background-color: var(--primary-color);
     color: var(--text-light);
@@ -54,8 +54,8 @@ header h1 {
 main {
     padding: 20px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column; /* Initial column layout */
+    align-items: center;
 }
 
 .search-form {
@@ -96,7 +96,21 @@ main {
     border-radius: 5px;
     margin: 0 10px 20px;
     padding: 10px;
-    width: 300px;
+    display: flex;
+    flex-direction: column; /* Column layout by default */
+    width: 100%; /* Full width on narrow screens */
+    max-width: 300px; /* Maximum width */
+}
+
+.recipe img {
+    width: 100%;
+    height: auto;
+}
+
+.recipe-info {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
 }
 
 .recipe h2 {
@@ -106,7 +120,7 @@ main {
 }
 
 .recipe p {
-    display: block; /* Show description on wider screens */
+    display: none; /* Hide description on narrow screens */
 }
 
 .rating {
@@ -156,26 +170,62 @@ footer a {
     height: auto;
 }
 
-    /* Media Queries */
     @media (min-width: 600px) {
-        header .logo {
-        justify-content: flex-start; /* Align items to the start */
-        }
-        header .logo img {
-        max-width: 60px; /* Adjust size for larger screens */
-        margin-right: 10px; /* Maintain spacing */
-        }
         main {
-        flex-direction: row; /* Display recipes in a row */
+        flex-direction: column; /* Keep column layout for main */
+        align-items: center; /* Center items */
         }
-}
+    
+        .recipes {
+        flex-direction: row; /* Row layout for recipes */
+        justify-content: center; /* Center recipes */
+        }
+    
+        .recipe {
+        flex-direction: row; /* Switch to row layout for recipe items */
+        width: 100%; /* Full width */
+        max-width: none; /* Remove max-width constraint */
+        }
+    
+        .recipe img {
+        width: 50%; /* Adjust image width */
+        }
+    
+        .recipe-info {
+        width: 50%; /* Adjust recipe info width */
+        padding: 0 10px;
+        }
+    
+        .recipe p {
+        display: block; /* Show description on wider screens */
+        }
+    }
 
     @media (min-width: 960px) {
+        main {
+        max-width: 960px; /* Limit main width */
+        margin: 0 auto; /* Center main */
+        }
+    
         .recipes {
-        justify-content: space-between; /* Space recipes evenly */
+        justify-content: flex-start; /* Align recipes to the start */
         }
+    
         .recipe {
-            width: calc(33.33% - 20px); /* Adjust width for three columns with spacing */
-            margin: 0 10px 20px;
+        width: 100%; /* Full width for recipe */
+        max-width: none; /* Remove max-width constraint */
         }
-}
+    
+        .recipe img {
+        width: 40%; /* Adjust image width */
+        }
+    
+        .recipe-info {
+        width: 60%; /* Adjust recipe info width */
+        }
+    
+        .search-form {
+        width: 100%; /* Full width for search form */
+        margin-bottom: 20px; /* Add bottom margin */
+        }
+    }

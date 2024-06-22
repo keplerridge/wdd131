@@ -3,68 +3,63 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A recipe review book">
+        <meta name="description" content="This website will provide recipe reviews and ratings.">
+        <link rel="icon" href="./favicon.png" type="image/x-icon">
         <meta name="author" content="Kepler Ridge">
         <title>Recipe Book</title>
-
-        <!-- Social Media Meta Tags -->
-        <meta property="og:title" content="Recipe Book">
-        <meta property="og:type" content="website" />
-        <meta property="og:description" content="Explore delicious recipes from around the world.">
-        <meta name="twitter:card" content="summary_large_image">
-
-        <!-- Link to CSS file -->
         <link rel="stylesheet" href="recipes.css">
-    </head>
-<body>
 
-    <!-- Header Section -->
-    <header>
-        <div class="logo">
+        <meta property="og:title" content="Recipe Book">
+        <meta property="og:type" content="website">
+        <meta property="og:description" content="This page is a place for you to find different recipes and their reviews!">
+        <meta property="og:image" content="https://keplerridge.github.io/wdd131/recipes/images/apple-crisp.jpg">
+        <meta property="og:url" content="https://keplerridge.github.io/wdd131/recipes/index.html">
+        <meta name="twitter:card" content="summary_large_image">
+    </head>
+    <body>
+        <header>
+            <div class="logo">
             <img src="images/recipe-book.png" alt="Recipe Book Logo">
             <h1>Recipe Book</h1>
-        </div>
-    </header>
+            </div>
+        </header>
 
-    <!-- Main Section -->
-    <main>
-        <!-- Search Form -->
-        <form action="#" method="get" class="search-form">
-            <input type="text" name="search" placeholder="Search recipes...">
-            <button type="submit">Search</button>
-        </form>
+        <main>
+            <div class="search-form">
+            <input type="text" placeholder="Find a Recipe!">
+            <button type="submit">🔍</button>
+            </div>
 
-        <!-- Recipe Section -->
-        <section class="recipes">
-            <!-- Example Recipe -->
-            <article class="recipe">
-                <h2>Spaghetti Carbonara</h2>
-                <p>Description of the recipe...</p>
+            <div class="recipes">
+            <div class="recipe">
+                <img src="images/apple-crisp.jpg" alt="Apple Crisp Image" loading="lazy">
+                <div class="recipe-info">
+                <div class="tags">
+                    <span class="tag">dessert</span>
+                    <span class="tag">tag2</span>
+                </div>
+                <h2>Apple Crisp</h2>
                 <div class="rating" role="img" aria-label="Rating: 4 out of 5 stars">
                     <span aria-hidden="true" class="icon-star">⭐</span>
                     <span aria-hidden="true" class="icon-star">⭐</span>
                     <span aria-hidden="true" class="icon-star">⭐</span>
-                    <span aria-hidden="true" class="icon-star-empty">⭐</span>
+                    <span aria-hidden="true" class="icon-star">⭐</span>
                     <span aria-hidden="true" class="icon-star-empty">☆</span>
                 </div>
-            </article>
-        </section>
-    </main>
+                <p>Description of the recipe goes here. This text will be hidden on narrow screens and shown on wider screens.</p>
+                </div>
+            </div>
+            </div>
+        </main>
 
-    <!-- Footer Section -->
-    <footer>
-        <!-- Social Media Icons -->
-        <div class="social-icons">
-            <a href="#"><img src="images/instagram_icon.svg" alt="Instagram"></a>
-            <a href="#"><img src="images/youtube_icon.svg" alt="YouTube"></a>
-            <a href="#"><img src="images/pinterest_icon.svg" alt="Pinterest"></a>
-        </div>
-
-        <!-- Attribution for icons -->
-        <p>
-            Icons provided by <a href="https://www.flaticon.com/free-icons/recipe" title="recipe icons">Freepik - Flaticon</a>
-        </p>
-    </footer>
-
-</body>
+        <footer>
+            <div class="social-icons">
+            <a href="#"><img src="images/instagram_icon.svg" alt="Instagram Icon"></a>
+            <a href="#"><img src="images/youtube_icon.svg" alt="YouTube Icon"></a>
+            <a href="#"><img src="images/pinterest_icon.svg" alt="Pinterest Icon"></a>
+            </div>
+            <a href="https://www.flaticon.com/free-icons/recipe" title="recipe icons">Recipe icons created by Freepik - Flaticon</a>
+            <p>&copy;2023</p>
+        </footer>
+    </body>
 </html>
