@@ -1,3 +1,6 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+
 /* Global Styles */
 :root {
     --primary-color: #1B98E0;
@@ -5,7 +8,7 @@
     --text-dark: #333;
     --text-light: #ebebeb;
     --primary-font: 'Roboto', sans-serif; /* Changed from Arial to Roboto */
-    --secondary-font: 'Amatic SC'; /* Keep for potential future use */
+    --secondary-font: 'Amatic SC', cursive; /* Updated to include Amatic SC */
 }
 
 body {
@@ -23,7 +26,7 @@ img {
     display: block; /* Ensure images behave as blocks */
 }
 
-  /* Header Styles */
+/* Header Styles */
 header {
     background-color: var(--primary-color);
     color: var(--text-light);
@@ -114,9 +117,10 @@ main {
 }
 
 .recipe h2 {
-    font-family: var(--primary-font); /* Ensure consistency */
-    font-size: 1.8rem;
+    font-family: var(--secondary-font); /* Use Amatic SC for recipe titles */
+    font-size: 3.5rem;
     margin-top: 0;
+    color: var(--primary-color); /* Ensure titles are visible */
 }
 
 .recipe p {
@@ -170,62 +174,80 @@ footer a {
     height: auto;
 }
 
-    @media (min-width: 600px) {
-        main {
+@media (min-width: 600px) {
+    main {
         flex-direction: column; /* Keep column layout for main */
         align-items: center; /* Center items */
-        }
-    
-        .recipes {
+    }
+
+    .recipes {
         flex-direction: row; /* Row layout for recipes */
         justify-content: center; /* Center recipes */
-        }
-    
-        .recipe {
+    }
+
+    .recipe {
         flex-direction: row; /* Switch to row layout for recipe items */
         width: 100%; /* Full width */
         max-width: none; /* Remove max-width constraint */
-        }
-    
-        .recipe img {
-        width: 50%; /* Adjust image width */
-        }
-    
-        .recipe-info {
-        width: 50%; /* Adjust recipe info width */
-        padding: 0 10px;
-        }
-    
-        .recipe p {
-        display: block; /* Show description on wider screens */
-        }
     }
 
-    @media (min-width: 960px) {
-        main {
+    .recipe img {
+        width: 50%; /* Adjust image width */
+    }
+
+    .recipe-info {
+        width: 50%; /* Adjust recipe info width */
+        padding: 0 10px;
+    }
+
+    .recipe p {
+        display: block; /* Show description on wider screens */
+    }
+}
+
+@media (min-width: 960px) {
+    main {
         max-width: 960px; /* Limit main width */
         margin: 0 auto; /* Center main */
-        }
-    
-        .recipes {
+    }
+
+    .recipes {
         justify-content: flex-start; /* Align recipes to the start */
-        }
-    
-        .recipe {
+    }
+
+    .recipe {
         width: 100%; /* Full width for recipe */
         max-width: none; /* Remove max-width constraint */
-        }
-    
-        .recipe img {
+    }
+
+    .recipe img {
         width: 40%; /* Adjust image width */
-        }
-    
-        .recipe-info {
+    }
+
+    .recipe-info {
         width: 60%; /* Adjust recipe info width */
-        }
-    
-        .search-form {
+    }
+
+    .search-form {
         width: 100%; /* Full width for search form */
         margin-bottom: 20px; /* Add bottom margin */
-        }
     }
+}
+
+/* Tag Styles */
+.tags-box {
+    border: 1px solid var(--primary-color); /* Add border */
+    padding: 5px; /* Add padding inside the box */
+    display: flex;
+    flex-direction: column; /* Stack the tags vertically */
+    width: fit-content; /* Adjust width to fit content */
+}
+
+.tag {
+    background-color: transparent; /* Remove background color */
+    color: var(--text-dark); /* Set text color */
+    padding: 5px;
+    margin: 2px 0; /* Add spacing between tags */
+    text-align: center;
+    border: none; /* Remove individual tag border */
+}
