@@ -40,18 +40,31 @@ function getRandomRating() {
     return (Math.random() * (5.0 - 3.0) + 3.0).toFixed(1);
 }
 
-// Function to add a book to the books array
-const addBook = (title, genre, rating) => {
-    const newBook = {
-        title: title,
-        genre: genre,
-        rating: rating.toFixed(1) // Convert rating to fixed decimal format
-    };
-    books.push(newBook);
+// Function to add a book to the library
+const addToLibrary = (book) => {
+    // Retrieve existing library from localStorage or initialize an empty array
+    let library = JSON.parse(localStorage.getItem('userLibrary')) || [];
+
+    // Check if the book is already in the library based on some unique identifier (e.g., title)
+    const existingBook = library.find(item => item.title === book.title);
+
+    if (!existingBook) {
+        // If the book is not already in the library, add it
+        library.push(book);
+
+        // Update localStorage with the new library array
+        localStorage.setItem('userLibrary', JSON.stringify(library));
+
+        // Log a confirmation message
+        console.log(`Added "${book.title}" to your library.`);
+    } else {
+        // Log a message indicating that the book is already in the library
+        console.log(`"${book.title}" is already in your library.`);
+    }
 };
 
 // Function to render books
-const renderBooks = (booksArray, containerId) => {
+const renderBooks = (booksArray, containerId, isLibraryPage) => {
     const mainContainer = document.getElementById(containerId);
     mainContainer.innerHTML = ''; // Clear previous content
 
@@ -79,11 +92,19 @@ const renderBooks = (booksArray, containerId) => {
                 bookInfo.textContent = `${book.title} - Rating: ${book.rating}`;
                 bookItem.appendChild(bookInfo);
 
-                const addToLibraryBtn = document.createElement('button');
-                addToLibraryBtn.textContent = 'Add to Library';
-                addToLibraryBtn.classList.add('add-to-library');
-                addToLibraryBtn.addEventListener('click', () => addToLibrary(book));
-                bookItem.appendChild(addToLibraryBtn);
+                const actionBtn = document.createElement('button');
+                actionBtn.textContent = isLibraryPage ? 'Remove from Library' : 'Add to Library';
+                actionBtn.classList.add(isLibraryPage ? 'remove-from-library' : 'add-to-library');
+                actionBtn.addEventListener('click', () => {
+                    if (isLibraryPage) {
+                        removeFromLibrary(book);
+                    } else {
+                        addToLibrary(book);
+                    }
+                    // Re-render books after action
+                    renderBooks(isLibraryPage ? getStoredBooks() : books, containerId, isLibraryPage);
+                });
+                bookItem.appendChild(actionBtn);
 
                 bookList.appendChild(bookItem);
             });
@@ -103,4 +124,24 @@ const filterBooks = (query) => {
     return filteredBooks;
 };
 
-export { books, addBook, renderBooks, filterBooks };
+// Function to get stored books from localStorage
+const getStoredBooks = () => {
+    return JSON.parse(localStorage.getItem('userLibrary')) || [];
+};
+
+// Function to remove a book from the library
+const removeFromLibrary = (book) => {
+    // Retrieve current library from localStorage
+    let library = JSON.parse(localStorage.getItem('userLibrary')) || [];
+
+    // Filter out the book to be removed
+    library = library.filter(item => item.title !== book.title);
+
+    // Update localStorage with the updated library array
+    localStorage.setItem('userLibrary', JSON.stringify(library));
+
+    // Log a confirmation message
+    console.log(`Removed "${book.title}" from your library.`);
+};
+
+export { books, renderBooks, filterBooks, addToLibrary, getStoredBooks, removeFromLibrary };

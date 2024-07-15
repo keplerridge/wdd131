@@ -1,20 +1,21 @@
-// scripts.js (index.html)
+// scripts.js
 
-import { books, addBook, renderBooks, filterBooks } from './data.js';
+import { books, addToLibrary, renderBooks, filterBooks, getStoredBooks, removeFromLibrary } from './data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const mainContainer = document.getElementById('all-books');
+    const libraryContainer = document.getElementById('library-books');
     const searchInput = document.getElementById('search-bar');
     const addBookForm = document.getElementById('add-book-form');
 
-    // Event listener for search input
+    // Event listener for search input on main page
     searchInput.addEventListener('input', (event) => {
         const query = event.target.value.trim();
         if (query.length === 0) {
-            renderBooks(books, 'all-books'); // Show all books if search query is empty
+            renderBooks(books, 'all-books', false); // Show all books if search query is empty
         } else {
             const filteredBooks = filterBooks(query);
-            renderBooks(filteredBooks, 'all-books'); // Filter books based on search query
+            renderBooks(filteredBooks, 'all-books', false); // Filter books based on search query
         }
     });
 
@@ -34,15 +35,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Add the new book to the books array
-        addBook(title, genre, rating);
+        addToLibrary({ title, genre, rating });
+
+        // Re-render the books list on the main page
+        renderBooks(books, 'all-books', false);
 
         // Clear form fields
         addBookForm.reset();
-
-        // Re-render the books list
-        renderBooks(books, 'all-books');
     });
 
-    // Initial rendering of books when the page loads
-    renderBooks(books, 'all-books');
+    // Initial rendering of books on the main page when the page loads
+    renderBooks(books, 'all-books', false);
+
+    // Event listener for search input on library page
+    if (libraryContainer) {
+        const librarySearchInput = document.getElementById('library-search-bar');
+
+        librarySearchInput.addEventListener('input', (event) => {
+            const query = event.target.value.trim();
+            if (query.length === 0) {
+                renderBooks(getStoredBooks(), 'library-books', true); // Show all stored books if search query is empty
+            } else {
+                // Implement your filter logic here if needed
+                // Example: const filteredBooks = getStoredBooks().filter(book => book.title.toLowerCase().includes(query.toLowerCase()));
+                renderBooks(getStoredBooks(), 'library-books', true); // Render stored books (filtered if necessary)
+            }
+        });
+
+        // Initial rendering of books on the library page when the page loads
+        renderBooks(getStoredBooks(), 'library-books', true);
+    }
 });
