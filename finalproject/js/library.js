@@ -1,71 +1,21 @@
+// library.js
+
+import { books, renderBooks } from './js/data.js';
+
 document.addEventListener('DOMContentLoaded', () => {
-    const renderLibrary = (library) => {
-        const libraryBooks = document.getElementById('library-books');
-        libraryBooks.innerHTML = '';
+    const searchInput = document.getElementById('search-bar');
 
-        library.forEach(book => {
-            const bookItem = document.createElement('div');
-            bookItem.classList.add('book-item');
+    // Event listener for search input
+    searchInput.addEventListener('input', (event) => {
+        const query = event.target.value.trim();
+        if (query.length === 0) {
+            renderBooks(books, 'library-books'); // Show all books if search query is empty
+        } else {
+            const filteredBooks = filterBooks(query);
+            renderBooks(filteredBooks, 'library-books'); // Filter books based on search query
+        }
+    });
 
-            const bookInfo = document.createElement('p');
-            bookInfo.textContent = `${book.title} - Rating: ${book.rating}`;
-            bookItem.appendChild(bookInfo);
-
-            const removeButton = document.createElement('button');
-            removeButton.classList.add('remove-button');
-            removeButton.textContent = 'Remove';
-            removeButton.addEventListener('click', () => openPopup(book));
-            bookItem.appendChild(removeButton);
-
-            libraryBooks.appendChild(bookItem);
-        });
-    };
-
-    const openPopup = (book) => {
-        const popup = document.getElementById('popup');
-        const popupContent = document.getElementById('popup-content');
-        const confirmButton = document.getElementById('confirm-button');
-        const cancelButton = document.getElementById('cancel-button');
-
-        popupContent.innerHTML = `
-            <h2>Are you sure you want to remove ${book.title}?</h2>
-            <div class="popup-buttons">
-                <button id="confirm-button">Confirm</button>
-                <button id="cancel-button">Cancel</button>
-            </div>
-        `;
-
-        confirmButton.addEventListener('click', () => {
-            removeBook(book);
-            closePopup();
-        });
-
-        cancelButton.addEventListener('click', closePopup);
-
-        popup.style.display = 'flex';
-    };
-
-    const closePopup = () => {
-        const popup = document.getElementById('popup');
-        popup.style.display = 'none';
-    };
-
-    const removeBook = (book) => {
-        let library = JSON.parse(localStorage.getItem('library')) || [];
-        library = library.filter(b => b.title !== book.title);
-        localStorage.setItem('library', JSON.stringify(library));
-        renderLibrary(library);
-    };
-
-    const searchBooks = () => {
-        const searchTerm = document.getElementById('search-bar').value.toLowerCase();
-        let library = JSON.parse(localStorage.getItem('library')) || [];
-        library = library.filter(book => book.title.toLowerCase().includes(searchTerm));
-        renderLibrary(library);
-    };
-
-    document.getElementById('search-bar').addEventListener('input', searchBooks);
-
-    renderLibrary(JSON.parse(localStorage.getItem('library')) || []);
+    // Initial rendering of books when the page loads
+    renderBooks(books, 'library-books');
 });
-
