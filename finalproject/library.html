@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Library - Book Reviews</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/data.js" defer></script>
+    <script src="./js/library.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="images/logo.jfif" alt="Website Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="library.html">Your Library</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Your Library</h1>
+        <input type="text" id="search-bar" placeholder="Search for books...">
+        <div id="library-books">
+            <!-- User's library books will be displayed here -->
+        </div>
+    </main>
+
+    <!-- Popup/Modal -->
+    <div id="popup" class="popup">
+        <div id="popup-content" class="popup-content">
+            <!-- Content dynamically inserted by JavaScript -->
+        </div>
+    </div>
+</body>
+</html>
