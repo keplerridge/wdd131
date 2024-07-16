@@ -106,12 +106,18 @@ const renderBooks = (booksArray, containerId, isLibraryPage) => {
                 actionBtn.classList.add(isLibraryPage ? 'remove-from-library' : 'add-to-library');
                 actionBtn.addEventListener('click', () => {
                     if (isLibraryPage) {
-                        removeFromLibrary(book);
+                        if (confirm(`Are you sure you want to remove "${book.title}" from your library?`)) {
+                            removeFromLibrary(book);
+                            // Re-render books after action
+                            renderBooks(getStoredBooks(), containerId, isLibraryPage);
+                        }
                     } else {
                         addToLibrary(book);
+                        // Re-render books after action
+                        renderBooks(books, containerId, isLibraryPage);
+                        // Show confirmation popup
+                        alert(`Added "${book.title}" to your library!`);
                     }
-                    // Re-render books after action
-                    renderBooks(isLibraryPage ? getStoredBooks() : books, containerId, isLibraryPage);
                 });
                 bookItem.appendChild(actionBtn);
 

@@ -45,6 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Clear form fields
         addBookForm.reset();
+
+        // Show confirmation popup
+        alert(`Added "${title}" to your library!`);
     });
 
     // Initial rendering of books on the main page when the page loads
