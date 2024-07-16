@@ -1,7 +1,7 @@
 // data.js
 
 // Define initial books array with random ratings
-let books = [
+let books = JSON.parse(localStorage.getItem('mainBooks')) || [
     { title: 'To Kill a Mockingbird', genre: 'Fiction', rating: getRandomRating() },
     { title: '1984', genre: 'Science Fiction', rating: getRandomRating() },
     { title: 'The Great Gatsby', genre: 'Classic', rating: getRandomRating() },
@@ -39,6 +39,15 @@ let books = [
 function getRandomRating() {
     return (Math.random() * (5.0 - 3.0) + 3.0).toFixed(1);
 }
+
+// Function to add a book to the main list
+const addBookToMainList = (book) => {
+    // Add the book to the main books array
+    books.push(book);
+
+    // Update localStorage with the new books array
+    localStorage.setItem('mainBooks', JSON.stringify(books));
+};
 
 // Function to add a book to the library
 const addToLibrary = (book) => {
@@ -144,4 +153,4 @@ const removeFromLibrary = (book) => {
     console.log(`Removed "${book.title}" from your library.`);
 };
 
-export { books, renderBooks, filterBooks, addToLibrary, getStoredBooks, removeFromLibrary };
+export { books, renderBooks, filterBooks, addBookToMainList, addToLibrary, getStoredBooks, removeFromLibrary };

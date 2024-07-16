@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Kepler Ridge">
+    <link rel="icon" href="./images/noun-books-7029955.png" type="image/x-icon">
     <title>Your Library - Book Reviews</title>
     <link rel="stylesheet" href="./css/styles.css">
-    <script src="./js/data.js" type="module" defer></script>
-    <script src="./js/library.js" type="module" defer></script>
+    <script src="./js/library.js" type="module"></script>
 </head>
 <body>
     <header>
         <img src="images/logo.jfif" alt="Website Logo" class="logo">
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="library.html">Your Library</a></li>
-                <li><a href="profile.html">Profile</a></li>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./library.html">Your Library</a></li>
+                <li><a href="./profile.html">Profile</a></li>
             </ul>
         </nav>
     </header>
-    <main>
+    <main id="main">
         <h1>Your Library</h1>
-        <input type="text" id="search-bar" placeholder="Search for books...">
-        <div id="library-books">
-            <!-- User's library books will be displayed here -->
-        </div>
+        <input type="text" id="library-search-bar" placeholder="Search your library...">
+        <div id="library-books"></div>
     </main>
+    <div id="notification" class="notification"></div>
 </body>
 </html>
